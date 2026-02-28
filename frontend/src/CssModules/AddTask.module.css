@@ -1,0 +1,77 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("../assets/signup-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.formWrapper {
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin: 40px 0;
+}
+
+.formWrapper .heading {
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.label {
+    font-size: 20px;
+}
+
+.labelWrapper sup {
+    color: red;
+    margin-left: -2px;
+}
+
+.formWrapper input,
+.formWrapper textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.formWrapper input:focus,
+.formWrapper textarea:focus {
+    outline: 2px solid #0b57d0;
+    border: 1px solid #fff;
+}
+
+.formWrapper textarea {
+    height: 150px;
+}
+
+.buttonWrapper {
+    text-align: right;
+}
+
+.buttonWrapper .submit {
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+}
+
+.buttonWrapper .submit:hover {
+    background-color: #0b57d0;
+}

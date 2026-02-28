@@ -1,0 +1,64 @@
+.navContainer {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+.navbar {
+    max-width: 1400px;
+    margin: auto;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo .logoImage {
+    width: 50px;
+    height: 55px;
+    margin-right: 5px;
+}
+
+.logoTextWrapper .logoText,
+.logoTextWrapper .logoSubText {
+    display: block;
+}
+
+.logoTextWrapper .logoText {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.logoTextWrapper .logoSubText {
+    font-size: 8px;
+    text-align: left;
+}
+
+.navList {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navList li {
+    margin: 0 10px;
+}
+
+.navList li a {
+    color: #000;
+    text-decoration: none;
+}
+
+.logoutBtn {
+    background: none;
+    border: none;
+    color: #000;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 0;
+}
