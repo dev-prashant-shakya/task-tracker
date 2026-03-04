@@ -30,7 +30,7 @@ function List() {
 
     const fetchTasks = async () => {
         try {
-            let list = await fetch("http://localhost:3200/tasks", {
+            let list = await fetch("https://todo-back-7ddq.onrender.com/tasks", {
                 headers: {
                     'Cache-Control': 'no-cache',
                     'Pragma': 'no-cache'
@@ -58,7 +58,7 @@ function List() {
 
     const deleteTaskHandler = async (id) => {
         dispatch(openDeleteTodoModal(true));
-        let result = await fetch(`http://localhost:3200/delete/${id}`, {
+        let result = await fetch(`https://todo-back-7ddq.onrender.com/delete/${id}`, {
             method: 'DELETE',
             credentials: 'include',
         });
@@ -92,7 +92,7 @@ function List() {
     }
 
     const markAsCompleted = async (id) => {
-        let result = await fetch(`http://localhost:3200/completed/${id}`, {
+        let result = await fetch(`https://todo-back-7ddq.onrender.com/completed/${id}`, {
             method: 'PUT',
             credentials: 'include',
         });
@@ -109,7 +109,7 @@ function List() {
         try {
             console.log("Selected tasks to delete:", selectedTask);
             
-            const res = await fetch("http://localhost:3200/delete-multiple", {
+            const res = await fetch("https://todo-back-7ddq.onrender.com/delete-multiple", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",

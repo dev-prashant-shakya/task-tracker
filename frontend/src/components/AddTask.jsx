@@ -28,7 +28,7 @@ function AddTask() {
             hour12: true,
         }).replace(/\//g, ".");
         const taskDataWithDate = {...taskData, dateTime};   
-        let result = await fetch("http://localhost:3200/add-task", {
+        let result = await fetch("https://todo-back-7ddq.onrender.com/add-task", {
             method: 'POST',
             body: JSON.stringify(taskDataWithDate), 
             headers: {

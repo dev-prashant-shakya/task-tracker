@@ -16,7 +16,7 @@ function SignupPage() {
     const signupHandler = async (e) => {
         e.preventDefault();
         console.log(userData);
-        let response = await fetch('http://localhost:3200/signup', {
+        let response = await fetch('https://todo-back-7ddq.onrender.com/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

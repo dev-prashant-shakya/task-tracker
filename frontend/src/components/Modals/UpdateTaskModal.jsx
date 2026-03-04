@@ -17,7 +17,7 @@ function UpdateTaskModal({ searchParams, setSearchParams, refetchTasks }) {
     }
     
     const singleTaskId = async taskId => {
-        let task = await fetch(`http://localhost:3200/task/${taskId}`, {
+        let task = await fetch(`https://todo-back-7ddq.onrender.com/task/${taskId}`, {
             credentials: 'include',
         });
         task = await task.json();
@@ -77,7 +77,7 @@ function UpdateTaskModal({ searchParams, setSearchParams, refetchTasks }) {
             return;
         }
 
-        let task = await fetch(`http://localhost:3200/update-task`, {
+        let task = await fetch(`https://todo-back-7ddq.onrender.com/update-task`, {
             method: 'PUT',
             body: JSON.stringify(singleTask),
             headers: {

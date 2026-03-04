@@ -10,7 +10,7 @@ function NavBar() {
     useEffect(() => {
         const verifyAuth = async () => {
             try {
-                const response = await fetch('http://localhost:3200/verify-token', {
+                const response = await fetch('https://todo-back-7ddq.onrender.com/verify-token', {
                     method: 'GET',
                     credentials: 'include',
                 });
@@ -37,7 +37,7 @@ function NavBar() {
 
     const handleLogout = async () => {
         try {
-            await fetch('http://localhost:3200/logout', {
+            await fetch('https://todo-back-7ddq.onrender.com/logout', {
                 method: 'POST',
                 credentials: 'include',
             });
