@@ -4,6 +4,11 @@ import cors from "cors";
 import { ObjectId } from "mongodb";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const app = e();
 
@@ -23,7 +28,7 @@ app.post('/login', async(req, res) => {
         const user = await collection.findOne({ email, password });
 
         if(user) {
-            jwt.sign({ email, password }, 'secretkey', {expiresIn: '5d'}, (err, token) => {
+            jwt.sign({ email, password }, JWT_SECRET, {expiresIn: '5d'}, (err, token) => {
                 res.cookie('token', token, {
                     httpOnly: true,
                     secure: false, // set to true in production with HTTPS
@@ -53,7 +58,7 @@ app.post('/signup', async (req, res) => {
         const collection = db.collection("users");
         const result = await collection.insertOne(userData);
         if (result) {
-            jwt.sign(userData, 'secretkey', {expiresIn: '5d'}, (err, token) => {
+            jwt.sign(userData, JWT_SECRET, {expiresIn: '5d'}, (err, token) => {
                 res.cookie('token', token, {
                     httpOnly: true,
                     secure: false, // set to true in production with HTTPS
@@ -309,7 +314,7 @@ app.get("/verify-token", (req, res) => {
         });
     }
     
-    jwt.verify(token, 'secretkey', (err, decoded) => {
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
         if (err) {
             return res.send({
                 success: false,
@@ -339,7 +344,7 @@ app.post("/logout", (req, res) => {
 function verifyJwtToken(req, res, next) {
     console.log("verifyJwtToken", req.cookies["token"]);
     const token = req.cookies["token"];
-    jwt.verify(token, 'secretkey', (err, decoded) => {
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
         if(err) {
             console.error("JWT verification error:", err);
             return res.status(401).send({
