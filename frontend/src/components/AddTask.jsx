@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import classes from '../CssModules/AddTask.module.css';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config';
 
 function AddTask() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ function AddTask() {
             hour12: true,
         }).replace(/\//g, ".");
         const taskDataWithDate = {...taskData, dateTime};   
-        let result = await fetch("https://todo-back-7ddq.onrender.com/add-task", {
+        let result = await fetch(`${API_URL}/add-task`, {
             method: 'POST',
             body: JSON.stringify(taskDataWithDate), 
             headers: {

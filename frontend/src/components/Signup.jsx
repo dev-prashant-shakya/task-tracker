@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import classes from "../CssModules/Signup.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import BackgroundVideo from "../assets/add-todo.mp4";
+import { API_URL } from "../config";
 
 function SignupPage() {
     const [userData, setUserData] = useState({name: '', email: '', password: ''});
@@ -16,7 +17,7 @@ function SignupPage() {
     const signupHandler = async (e) => {
         e.preventDefault();
         console.log(userData);
-        let response = await fetch('https://todo-back-7ddq.onrender.com/signup', {
+        let response = await fetch(`${API_URL}/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { API_URL } from "../config";
 
 export default function Protected({children}) {
     const [isAuthenticated, setIsAuthenticated] = useState(null); // null = loading, true/false = result
@@ -7,7 +8,7 @@ export default function Protected({children}) {
     useEffect(() => {
         const verifyAuth = async () => {
             try {
-                const response = await fetch('https://todo-back-7ddq.onrender.com/verify-token', {
+                const response = await fetch(`${API_URL}/verify-token`, {
                     method: 'GET',
                     credentials: 'include', // sends cookies
                 });

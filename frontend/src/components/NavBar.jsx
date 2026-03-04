@@ -2,6 +2,7 @@ import {Link, useNavigate} from "react-router-dom";
 import classes from '../CssModules/NavBar.module.css';
 import Logo from "../assets/todologo.png";
 import { useEffect, useState } from "react";
+import { API_URL } from '../config';
 
 function NavBar() {
     const [login, setLogin] = useState(false);
@@ -10,7 +11,7 @@ function NavBar() {
     useEffect(() => {
         const verifyAuth = async () => {
             try {
-                const response = await fetch('https://todo-back-7ddq.onrender.com/verify-token', {
+                const response = await fetch(`${API_URL}/verify-token`, {
                     method: 'GET',
                     credentials: 'include',
                 });
@@ -37,7 +38,7 @@ function NavBar() {
 
     const handleLogout = async () => {
         try {
-            await fetch('https://todo-back-7ddq.onrender.com/logout', {
+            await fetch(`${API_URL}/logout`, {
                 method: 'POST',
                 credentials: 'include',
             });

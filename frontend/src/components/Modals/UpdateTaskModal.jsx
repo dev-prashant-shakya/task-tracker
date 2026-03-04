@@ -2,6 +2,7 @@ import classes from '../../CssModules/UpdateTask.module.css';
 import { useDispatch } from 'react-redux';
 import {openUpdateTodoModal } from '../../redux/profileSlice';
 import { useEffect, useState } from 'react';
+import { API_URL } from '../../config';
 
 function UpdateTaskModal({ searchParams, setSearchParams, refetchTasks }) {
     const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function UpdateTaskModal({ searchParams, setSearchParams, refetchTasks }) {
     }
     
     const singleTaskId = async taskId => {
-        let task = await fetch(`https://todo-back-7ddq.onrender.com/task/${taskId}`, {
+        let task = await fetch(`${API_URL}/task/${taskId}`, {
             credentials: 'include',
         });
         task = await task.json();
@@ -77,7 +78,7 @@ function UpdateTaskModal({ searchParams, setSearchParams, refetchTasks }) {
             return;
         }
 
-        let task = await fetch(`https://todo-back-7ddq.onrender.com/update-task`, {
+        let task = await fetch(`${API_URL}/update-task`, {
             method: 'PUT',
             body: JSON.stringify(singleTask),
             headers: {

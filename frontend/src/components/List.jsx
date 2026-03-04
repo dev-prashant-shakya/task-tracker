@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { openUpdateTodoModal, openDeleteTodoModal } from '../redux/profileSlice';
 import { Link, useSearchParams, useLocation } from "react-router-dom";
 import DeleteTaskModal from "./Modals/DeleteTaskModal";
+import { API_URL } from '../config';
 
 function List() {
     const [tasks, setTasks] = useState([]);
@@ -30,7 +31,7 @@ function List() {
 
     const fetchTasks = async () => {
         try {
-            let list = await fetch("https://todo-back-7ddq.onrender.com/tasks", {
+            let list = await fetch(`${API_URL}/tasks`, {
                 headers: {
                     'Cache-Control': 'no-cache',
                     'Pragma': 'no-cache'
@@ -58,7 +59,7 @@ function List() {
 
     const deleteTaskHandler = async (id) => {
         dispatch(openDeleteTodoModal(true));
-        let result = await fetch(`https://todo-back-7ddq.onrender.com/delete/${id}`, {
+        let result = await fetch(`${API_URL}/delete/${id}`, {
             method: 'DELETE',
             credentials: 'include',
         });
@@ -92,7 +93,7 @@ function List() {
     }
 
     const markAsCompleted = async (id) => {
-        let result = await fetch(`https://todo-back-7ddq.onrender.com/completed/${id}`, {
+        let result = await fetch(`${API_URL}/completed/${id}`, {
             method: 'PUT',
             credentials: 'include',
         });
@@ -109,7 +110,7 @@ function List() {
         try {
             console.log("Selected tasks to delete:", selectedTask);
             
-            const res = await fetch("https://todo-back-7ddq.onrender.com/delete-multiple", {
+            const res = await fetch(`${API_URL}/delete-multiple`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
